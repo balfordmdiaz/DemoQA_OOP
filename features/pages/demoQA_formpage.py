@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 class demoqaPageLocator(object):
+    formOption = (By.XPATH, "//*[@id='app']/div/div/div[2]/div/div[2]/div/div[3]/h5")
+    practiceForm = (By.XPATH, "/html/body/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/ul/li")
     txtfirstName = (By.ID, "firstName")
     txtlastName = (By.ID, "lastName")
     txtemail = (By.ID, "userEmail")
@@ -18,7 +20,7 @@ class demoqaPageLocator(object):
     addss = (By.ID, "currentAddress")
     state = (By.XPATH, "//*[@id='react-select-3-input']")
     city = (By.XPATH, "//*[@id='react-select-4-input']")
-    btnSubmit = (By.ID, "submit")
+    btnSubmit = (By.XPATH, "//*[@id='submit']")
     
 
 
@@ -26,6 +28,12 @@ class demoqaPage(demoqaPageLocator):
 
     def __init__(self, driver):
         self.driver = driver
+
+    def select_form_option(self):
+        self.driver.find_element(*self.formOption).click() 
+
+    def select_practice_form(self):
+        self.driver.find_element(*self.practiceForm).click()
 
     def fill_first_name(self, fname):
         self.driver.find_element(*self.txtfirstName).send_keys(fname)

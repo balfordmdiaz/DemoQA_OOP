@@ -3,6 +3,16 @@ from behave import *
 @given(u'go to the url')
 def step_impl(context):
     context.driver.get(context.webQA)
+    
+
+@given(u'select forms')
+def step_impl(context):
+    context.demoQA.select_form_option()
+
+
+@given(u'select practice form')
+def step_impl(context):
+    context.demoQA.select_practice_form()   
 
 
 @given(u'insert the firstname "{fname}", lastname "{lname}", email "{email}"')

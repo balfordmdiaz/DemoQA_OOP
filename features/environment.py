@@ -2,6 +2,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from features.pages.demoQA_formpage import demoqaPage
+from features.pages.webtables_page import webTables
 from dotenv import *
 import time
 
@@ -13,6 +14,7 @@ def before_all(context):
     context.driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
     context.driver.maximize_window()
     context.demoQA = demoqaPage(context.driver)
+    context.wtbl = webTables(context.driver)
     context.webQA = config.get("QA_URL")
 
 def after_all(context):
